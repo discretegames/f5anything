@@ -1,0 +1,9 @@
+.gitignore
+.prettierignore
+icon.afdesign
+tsconfig.json
+
+src/
+.github/
+.vscode/
+sampleWorkspace/

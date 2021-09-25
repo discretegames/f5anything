@@ -1,0 +1,85 @@
+{
+	"name": "f5anything",
+	"displayName": "F5 Anything",
+	"description": "Lets you put any terminal command in a launch.json to run it with F5.",
+	"version": "0.0.1",
+	"author": {
+		"name": "discretegames",
+		"url": "https://github.com/discretegames",
+		"email": "discretizedgames@gmail.com"
+	},
+	"homepage": "https://marketplace.visualstudio.com/items?itemName=discretegames.f5anything",
+	"publisher": "discretegames",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/discretegames/f5anything"
+	},
+	"icon": "icon.png",
+	"galleryBanner": {
+		"color": "#dadada"
+	},
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"dependencies": {
+		"vscode-debugadapter": "^1.49.0"
+	},
+	"devDependencies": {
+		"@types/node": "^12.12.0",
+		"@types/vscode": "^1.34.0",
+		"typescript": "^4.2.2"
+	},
+	"main": "./out/extension.js",
+	"activationEvents": [
+		"onDebugResolve:f5anything"
+	],
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"contributes": {
+		"debuggers": [
+			{
+				"type": "f5anything",
+				"label": "F5 Anything",
+				"runtime": "node",
+				"configurationAttributes": {
+					"launch": {
+						"required": [
+							"command"
+						],
+						"properties": {
+							"command": {
+								"type": "string",
+								"description": "The terminal command to run when this configuration is debugged or ran.",
+								"default": "echo REPLACE WITH COMMAND"
+							}
+						}
+					}
+				},
+				"initialConfigurations": [
+					{
+						"name": "F5 Anything: Custom Command",
+						"command": "echo Change this echo to your custom command",
+						"type": "f5anything",
+						"request": "launch"
+					}
+				],
+				"configurationSnippets": [
+					{
+						"label": "F5 Anything: New Custom Command",
+						"description": "A new configuration for running a custom terminal command.",
+						"body": {
+							"name": "F5 Anything: Custom Command",
+							"command": "echo Change this echo to your custom command",
+							"type": "f5anything",
+							"request": "launch"
+						}
+					}
+				]
+			}
+		]
+	}
+}
