@@ -17,8 +17,19 @@
 	},
 	"icon": "icon.png",
 	"galleryBanner": {
-		"color": "#dadada"
+		"color": "#2bd4b6"
 	},
+	"categories": [
+		"Debuggers",
+		"Other"
+	],
+	"keywords": [
+		"run anything",
+		"terminal command",
+		"console command",
+		"shell command",
+		"launch configuration"
+	],
 	"engines": {
 		"vscode": "^1.52.0"
 	},
@@ -32,7 +43,7 @@
 	},
 	"main": "./out/extension.js",
 	"activationEvents": [
-		"onDebugResolve:f5anything"
+		"onDebug"
 	],
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -53,8 +64,18 @@
 						"properties": {
 							"command": {
 								"type": "string",
-								"description": "The terminal command to run when this configuration is debugged or ran.",
-								"default": "echo REPLACE WITH COMMAND"
+								"description": "The terminal command to run when this configuration runs.",
+								"default": "echo Change this echo to your custom command"
+							},
+							"terminalIndex": {
+								"type": "number",
+								"description": "The 0-based index of the terminal in the VSCode terminal list to send commands to. Uses own terminal if out of range or -1 (default). Terminals are indexed in order of creation, not by visual order.",
+								"default": -1
+							},
+							"showTerminal": {
+								"type": "boolean",
+								"description": "Whether or not to switch to the terminal F5 Anything just sent a command to. Defaults to true.",
+								"default": true
 							}
 						}
 					}
@@ -62,9 +83,11 @@
 				"initialConfigurations": [
 					{
 						"name": "F5 Anything: Custom Command",
-						"command": "echo Change this echo to your custom command",
 						"type": "f5anything",
-						"request": "launch"
+						"request": "launch",
+						"command": "echo CHANGE THIS ECHO TO YOUR COMMAND",
+						"terminalIndex": -1,
+						"showTerminal": true
 					}
 				],
 				"configurationSnippets": [
@@ -73,9 +96,11 @@
 						"description": "A new configuration for running a custom terminal command.",
 						"body": {
 							"name": "F5 Anything: Custom Command",
-							"command": "echo Change this echo to your custom command",
 							"type": "f5anything",
-							"request": "launch"
+							"request": "launch",
+							"command": "echo CHANGE THIS ECHO TO YOUR COMMAND",
+							"terminalIndex": -1,
+							"showTerminal": true
 						}
 					}
 				]

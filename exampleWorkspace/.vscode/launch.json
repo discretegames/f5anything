@@ -1,0 +1,31 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		
+		{
+			"name": "F5 Anything Echo Example",
+			"type": "f5anything",
+			"request": "launch",
+			"command": "echo \"Imagine this was some complex command.\"",
+		},
+		{
+			"name": "",
+			"type": "f5anything",
+			"request": "launch",
+			"command": "node example.js",
+			"terminalIndex": 0,
+			"showTerminal": false
+		},
+		{
+			"name": "F5 Anything Python Example",
+			"type": "f5anything",
+			"request": "launch",
+			"command": "python \"${file}\"",
+			"terminalIndex": 1,
+			"showTerminal": true
+		}
+	]
+}

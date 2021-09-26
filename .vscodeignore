@@ -6,4 +6,4 @@ tsconfig.json
 src/
 .github/
 .vscode/
-sampleWorkspace/
+exampleWorkspace/
