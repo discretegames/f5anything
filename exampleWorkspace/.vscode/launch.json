@@ -4,7 +4,6 @@
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
-		
 		{
 			"name": "F5 Anything Echo Example",
 			"type": "f5anything",
@@ -12,7 +11,7 @@
 			"command": "echo \"Imagine this was some complex command.\"",
 		},
 		{
-			"name": "",
+			"name": "F5 Anything JS Example",
 			"type": "f5anything",
 			"request": "launch",
 			"command": "node example.js",
