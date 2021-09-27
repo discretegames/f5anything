@@ -39,6 +39,8 @@ The full launch.json would look like:
 A quick way to add configurations is the "Add Configurations..." button on the bottom right of a launch.json.
 Hit that and start typing "F5 Anything" for a default configuration.
 
+All of `"name"`, `"type"`, `"request"`, and `"command"` are required configuration properties.
+
 There are two optional configuration properties:
 
 - `"terminalIndex"` (integer, defaults to `-1`): The index of the integrated terminal to send the command to.
@@ -51,10 +53,10 @@ So, for example, this launch configuration will send commands to the terminal at
 
 ```json
 {
-    "name": "F5 Anything: My Custom Command",
+    "name": "Another Example",
     "type": "f5anything",
     "request": "launch",
-    "command": "echo Put your command here",
+    "command": "echo Hi",
     "terminalIndex": 0,
     "showTerminal": false
 }
