@@ -2,7 +2,7 @@
 	"name": "f5anything",
 	"displayName": "F5 Anything",
 	"description": "Put any terminal command in a launch.json to run it with F5.",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"author": {
 		"name": "discretegames",
 		"url": "https://github.com/discretegames",
@@ -17,7 +17,7 @@
 	},
 	"icon": "icon.png",
 	"galleryBanner": {
-		"color": "#6fdf77"
+		"color": "#63DB63"
 	},
 	"categories": [
 		"Debuggers",
