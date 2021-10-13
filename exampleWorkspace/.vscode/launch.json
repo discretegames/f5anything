@@ -9,6 +9,7 @@
 			"type": "f5anything",
 			"request": "launch",
 			"command": "echo \"Imagine this was some complex command.\"",
+			"terminalName": "F5 Anything Example",
 		},
 		{
 			"name": "F5 Anything JS Example",
@@ -16,7 +17,7 @@
 			"request": "launch",
 			"command": "node example.js",
 			"terminalIndex": 0,
-			"showTerminal": false
+			"showTerminal": true
 		},
 		{
 			"name": "F5 Anything Python Example",
@@ -24,7 +25,7 @@
 			"request": "launch",
 			"command": "python \"${file}\"",
 			"terminalIndex": 1,
-			"showTerminal": true
+			"showTerminal": false
 		}
 	]
 }

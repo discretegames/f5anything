@@ -67,14 +67,19 @@
 								"description": "The terminal command to run when this configuration runs.",
 								"default": "echo Change this echo to your custom command"
 							},
+							"terminalName": {
+								"type": "string",
+								"description": "The name given to the dedicated terminal F5 Anything creates for itself. Defaults to \"F5 Anything\".",
+								"default": "F5 Anything"
+							},
 							"terminalIndex": {
 								"type": "number",
-								"description": "The 0-based index of the terminal in the VSCode terminal list to send commands to. Uses own terminal if out of range or -1 (default). Terminals are indexed in order of creation, not by visual order.",
+								"description": "The index of the terminal to send commands to. When -1 or out of range a dedicated terminal is created and used. Terminals are 0-indexed in order of creation, not by visual order. Defaults to -1.",
 								"default": -1
 							},
 							"showTerminal": {
 								"type": "boolean",
-								"description": "Whether or not to switch to the terminal F5 Anything just sent a command to. Defaults to true.",
+								"description": "Whether or not the terminal a command is sent to is given focus. Defaults to true.",
 								"default": true
 							}
 						}
@@ -85,20 +90,29 @@
 						"name": "F5 Anything: Custom Command",
 						"type": "f5anything",
 						"request": "launch",
-						"command": "echo CHANGE THIS ECHO TO YOUR COMMAND",
-						"terminalIndex": -1,
-						"showTerminal": true
+						"command": "echo CHANGE THIS ECHO TO YOUR COMMAND"
 					}
 				],
 				"configurationSnippets": [
 					{
-						"label": "F5 Anything: New Custom Command",
-						"description": "A new configuration for running a custom terminal command.",
+						"label": "F5 Anything: Basic Configuration",
+						"description": "Basic F5 Anything configuration for running a custom terminal command.",
+						"body": {
+							"name": "F5 Anything: Custom Command",
+							"type": "f5anything",
+							"request": "launch",
+							"command": "echo CHANGE THIS ECHO TO YOUR COMMAND"
+						}
+					},
+					{
+						"label": "F5 Anything: Full Configuration",
+						"description": "Full F5 Anything configuration for running a custom terminal command with all properties present.",
 						"body": {
 							"name": "F5 Anything: Custom Command",
 							"type": "f5anything",
 							"request": "launch",
 							"command": "echo CHANGE THIS ECHO TO YOUR COMMAND",
+							"terminalName": "F5 Anything",
 							"terminalIndex": -1,
 							"showTerminal": true
 						}

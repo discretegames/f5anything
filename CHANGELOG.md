@@ -7,6 +7,13 @@ will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2021-10-13
+
+- Added `"terminalName"` configuration property to allow changing the default "F5 Anything" terminal title.
+- Added full and basic premade launch configurations.
+Full has all configuration properties whereas basic has only required ones.
+- Commands that are not strings will be converted to strings rather than displaying an error.
+
 ## [1.0.2] - 2021-10-09
 
 - Changed VS Marketplace icon and color.

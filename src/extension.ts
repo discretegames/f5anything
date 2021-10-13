@@ -20,7 +20,11 @@ function getTerminal(configuration: vscode.DebugConfiguration): vscode.Terminal 
 	}
 
 	if (!ownTerminal || ownTerminal.exitStatus) {
-		ownTerminal = vscode.window.createTerminal("F5 Anything");
+		let name = "F5 Anything";
+		if (configuration.hasOwnProperty("terminalName")) {
+			name = String(configuration.terminalName);
+		}
+		ownTerminal = vscode.window.createTerminal(name);
 	}
 
 	return ownTerminal;
@@ -33,16 +37,12 @@ class InlineDebugAdapterFactory implements vscode.DebugAdapterDescriptorFactory 
 				`No command found for F5 Anything launch configuration "${session.configuration.name}". \
 Add one like "command": "echo Hello" to your launch.json.`
 			);
-		} else if (typeof session.configuration.command !== "string") {
-			vscode.window.showErrorMessage(
-				`The command for F5 Anything launch configuration "${session.configuration.name}" must be a string.`
-			);
 		} else {
 			const terminal = getTerminal(session.configuration);
 			if (!session.configuration.hasOwnProperty("showTerminal") || session.configuration.showTerminal) {
 				terminal.show();
 			}
-			terminal.sendText(session.configuration.command);
+			terminal.sendText(String(session.configuration.command));
 		}
 		return new vscode.DebugAdapterInlineImplementation(new DummyDebugSession());
 	}

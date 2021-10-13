@@ -1,6 +1,6 @@
 # [F5 Anything](https://marketplace.visualstudio.com/items?itemName=discretegames.f5anything)
 
-F5 Anything is a VSCode extension that lets you put any console command into a launch.json configuration
+Lets you put any normal console command into a VSCode launch.json configuration
 so you can run it with F5 (or whatever your normal run/debug keybind is).
 
 Simply install the extension then add a configuration like this to the
@@ -15,7 +15,7 @@ Simply install the extension then add a configuration like this to the
 }
 ```
 
-Replacing the `echo Put your command here` with whatever command you want, which may include
+Replace the `echo Put your command here` with whatever command you want. It may include
 [variables such as `${file}`](https://code.visualstudio.com/docs/editor/variables-reference).
 When the launch configuration is run, the command will be run in a
 [VSCode integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).
@@ -36,18 +36,23 @@ The full launch.json would look like:
 }
 ```
 
-A quick way to add configurations is the "Add Configurations..." button on the bottom right of a launch.json.
-Hit that and start typing "F5 Anything" for a default configuration.
+A quick way to add configurations is the "Add Configuration..." button on the bottom right of a launch.json.
+Hit that and start typing "F5 Anything" for a premade configuration:
 
-All of `"name"`, `"type"`, `"request"`, and `"command"` are required configuration properties.
+![adding configurations example screenshot](./configurations.png "Adding Configurations")
 
-There are two optional configuration properties:
+The basic configuration only has the required configuration properties (`"name"`, `"type"`, `"request"`, and `"command"`).
+The full configuration has three additional preset properties, each of which are optional:
 
-- `"terminalIndex"` (integer, defaults to `-1`): The index of the integrated terminal to send the command to.
-When `-1` or an invalid index, commands will be sent to a new, dedicated integrated terminal.
-(Note that terminals are indexed by order of creation, which does not always match visual order.)
+- `"terminalName"` (string, defaults to `"F5 Anything"`):
+The name given to the dedicated integrated terminal F5 Anything creates for itself.
 
-- `"showTerminal"` (boolean, defaults to `true`): Whether or not the terminal a command was sent to is given focus.
+- `"terminalIndex"` (integer, defaults to `-1`):
+The index of the integrated terminal in the VSCode terminal list to send commands to. When -1 or out of range
+a dedicated terminal is created and used. Note that terminals are 0-indexed in order of creation, not by visual order.
+
+- `"showTerminal"` (boolean, defaults to `true`):
+Whether or not the terminal an F5 Anything command is sent to is given focus.
 
 So, for example, this launch configuration will send commands to the terminal at index 0 but not switch focus to it:
 
