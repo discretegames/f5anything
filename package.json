@@ -2,7 +2,7 @@
 	"name": "f5anything",
 	"displayName": "F5 Anything",
 	"description": "Put any terminal command in a launch.json to run it with F5.",
-	"version": "1.0.2",
+	"version": "1.1.0",
 	"author": {
 		"name": "discretegames",
 		"url": "https://github.com/discretegames",
