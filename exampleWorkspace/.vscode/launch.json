@@ -12,7 +12,7 @@
 			"terminalName": "F5 Anything Example",
 		},
 		{
-			"name": "F5 Anything JS Example - runs exmaple.js",
+			"name": "F5 Anything JS Example - runs example.js",
 			"type": "f5anything",
 			"request": "launch",
 			"command": "node example.js",
