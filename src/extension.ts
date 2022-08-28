@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 import { ProviderResult } from "vscode";
-import { DebugSession, TerminatedEvent } from "vscode-debugadapter";
+import { DebugSession, TerminatedEvent } from "@vscode/debugadapter";
 
 let ownTerminal: vscode.Terminal;
 
@@ -30,19 +30,30 @@ function getTerminal(configuration: vscode.DebugConfiguration): vscode.Terminal 
 	return ownTerminal;
 }
 
+// All this use of hasOwnProperty probably not needed, but doesn't hurt.
 class InlineDebugAdapterFactory implements vscode.DebugAdapterDescriptorFactory {
 	createDebugAdapterDescriptor(session: vscode.DebugSession): ProviderResult<vscode.DebugAdapterDescriptor> {
-		if (!session.configuration.hasOwnProperty("command")) {
-			vscode.window.showErrorMessage(
-				`No command found for F5 Anything launch configuration "${session.configuration.name}". \
-Add one like "command": "echo Hello" to your launch.json.`
-			);
+		const command: false | string =
+			session.configuration.hasOwnProperty("command") && session.configuration.command;
+		const vscCommand: false | string =
+			session.configuration.hasOwnProperty("vscCommand") && session.configuration.vscCommand;
+
+		if (!command && !vscCommand) {
+			vscode.window.showWarningMessage(`F5 Anything had nothing to do. No command or vscCommand found in launch \
+configuration "${session.configuration.name}". \
+Add one like "command": "echo Hello" or "vscCommand": "editor.action.formatDocument" to your launch.json.`);
 		} else {
-			const terminal = getTerminal(session.configuration);
-			if (!session.configuration.hasOwnProperty("showTerminal") || session.configuration.showTerminal) {
-				terminal.show();
+			if (vscCommand) {
+				vscode.commands.executeCommand(vscCommand);
 			}
-			terminal.sendText(String(session.configuration.command));
+
+			if (command) {
+				const terminal = getTerminal(session.configuration);
+				if (!session.configuration.hasOwnProperty("showTerminal") || session.configuration.showTerminal) {
+					terminal.show();
+				}
+				terminal.sendText(String(command)); // Using String is kinda weird..
+			}
 		}
 		return new vscode.DebugAdapterInlineImplementation(new DummyDebugSession());
 	}
@@ -53,3 +64,6 @@ export class DummyDebugSession extends DebugSession {
 		this.sendEvent(new TerminatedEvent());
 	}
 }
+
+// Had to migrate to new vscode packages
+// https://code.visualstudio.com/api/working-with-extensions/testing-extension#migrating-from-vscode

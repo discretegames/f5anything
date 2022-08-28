@@ -5,14 +5,14 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "F5 Anything Echo Example",
+			"name": "F5 Anything Echo Example - echos text to the console",
 			"type": "f5anything",
 			"request": "launch",
 			"command": "echo \"Imagine this was some complex command.\"",
 			"terminalName": "F5 Anything Example",
 		},
 		{
-			"name": "F5 Anything JS Example",
+			"name": "F5 Anything JS Example - runs exmaple.js",
 			"type": "f5anything",
 			"request": "launch",
 			"command": "node example.js",
@@ -20,12 +20,25 @@
 			"showTerminal": true
 		},
 		{
-			"name": "F5 Anything Python Example",
+			"name": "F5 Anything Python Example - runs the current file in Python but doesn't switch terminals",
 			"type": "f5anything",
 			"request": "launch",
 			"command": "python \"${file}\"",
 			"terminalIndex": 1,
 			"showTerminal": false
+		},
+		{
+			"name": "F5 Anything VSCode Command Example - opens the Open File dialog",
+			"type": "f5anything",
+			"request": "launch",
+			"vscCommand": "workbench.action.files.openFile",
+		},
+		{
+			"name": "F5 Anything VSCode Command Example - opens the Open File dialog and tells you about it",
+			"type": "f5anything",
+			"request": "launch",
+			"vscCommand": "workbench.action.files.openFile",
+			"command": "echo \"I opened your Open File dialog\""
 		}
 	]
 }

@@ -21,3 +21,7 @@
 		}
 	]
 }
+// To Manually Test F5Anything In Dev:
+// Run the "Run Extension" launch configuration from above and open the exmpleWorkspace in the VSCode window that opens.
+// That VSCode window has the devlopment version of the F5Anything extension installed for testing.
+// But it doesn't seem to live-reload? Need to hit the little green refresh arrow here after changes are made.
